@@ -1,0 +1,14 @@
+version: '3'
+services:
+  db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: example_db
+  web:
+    build: .
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
